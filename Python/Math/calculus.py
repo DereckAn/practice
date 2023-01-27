@@ -42,8 +42,21 @@ display(Math("\\lim_{x\\to %g^-} %s = %s" % (lim_point, sym.latex(fx), lim)))
 
 plt.show()
 
+'''---------------------------------------------------------------'''
 
+x = sym.symbols('x')
 
+fx = sym.sqrt(x+1) * sym.exp(-x)
+gx = sym.cos(x + sym.sin(x))
+
+fxx = sym.lambdify(x,fx)
+gxx = sym.lambdify(x,gx)
+
+xx = np.linspace(0,10,100)
+
+plt.plot(xx,fxx(xx), label = "f(x)")
+plt.plot(xx,gxx(xx), label = "g(x)")
+plt.show()
 
 
 
