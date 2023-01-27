@@ -58,8 +58,16 @@ plt.plot(xx,fxx(xx), label = "f(x)")
 plt.plot(xx,gxx(xx), label = "g(x)")
 plt.show()
 
+lim_pnt = 5
+lim_fx = sym.limit(fx,x,lim_pnt)
+lim_gx = sym.limit(gx,x,lim_pnt)
 
 
+lim_fgx = sym.limit(fx/gx,x,lim_pnt)
+
+display(Math('\\frac{\\lim_{x\\to %g }f(x)} {\\lim_{x\\to %g }f(x)} = \
+    \\frac{%g}{%g} = %g' \
+    % (lim_pnt,lim_pnt, lim_fx, lim_gx, lim_fx/lim_gx)))
 
 
 
