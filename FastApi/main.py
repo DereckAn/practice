@@ -6,6 +6,7 @@ app = FastAPI()
 # Documentacion con Swagger: /docs
 # Documentacion con Redocly: /redocs
 # http://127.0.0.1:8000
+# postman par ainteractuar con el api. Y con el backend. 
 
 @app.get("/")
 async def root():
