@@ -39,6 +39,7 @@ async def users():
 async def id(id: int):
     return (find_user(id))
   
+  
 
 # http://127.0.0.1:8000/userquery/?id=1     --   fijate bien en el simbolo de interrogacion 
 @app.get("/userquery/")  # Esto es llamar por query
@@ -46,12 +47,42 @@ async def id(id: int):   # esto solo es un ejemplo para cuando haya mas parametr
    return (find_user(id))
 
 
+
 @app.post("/adduser/")  # Esto es para agregar usuarios
 async def user(user: User):
     if type(find_user(user.id)) == User:
         return {"Error": "User already exists"}
-    else:
-        users_list.append(user)
+    
+    users_list.append(user)
+    return user
+        
+        
+        
+@app.put("/updateuser/")  # Esto es para actualizar usuarios
+async def updateU(user: User):
+    found = False
+    for i,k in enumerate(users_list):
+        if k.id == user.id:
+            users_list[i] = user
+            found = True
+    if not found:
+         return {"Error": "User not found"}
+     
+    return user
+            
+@app.delete("/deleteuser/{id}")  # Esto es para eliminar usuarios
+async def deleteU(id: int):
+    found = False
+    for i,k in enumerate(users_list):
+        if k.id == id:
+            del users_list[i]
+            found = True
+    if not found:
+        return {"Error": "User not found"}
+
+
+
+
     
 def find_user(id: int):
     user = filter(lambda x: x.id == id, users_list) # Esto es para buscar dentro de una lista. Estudiar mas adelante. 
@@ -60,11 +91,5 @@ def find_user(id: int):
     except:
         return {"Error": "User not found"}
 
-
-
-
-
-
-    
 
     
