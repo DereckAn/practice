@@ -46,6 +46,12 @@ async def id(id: int):   # esto solo es un ejemplo para cuando haya mas parametr
    return (find_user(id))
 
 
+@app.post("/adduser/")  # Esto es para agregar usuarios
+async def user(user: User):
+    if type(find_user(user.id)) == User:
+        return {"Error": "User already exists"}
+    else:
+        users_list.append(user)
     
 def find_user(id: int):
     user = filter(lambda x: x.id == id, users_list) # Esto es para buscar dentro de una lista. Estudiar mas adelante. 
@@ -53,3 +59,12 @@ def find_user(id: int):
         return list(user)[0]
     except:
         return {"Error": "User not found"}
+
+
+
+
+
+
+    
+
+    
