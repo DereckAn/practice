@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel # nos da la capacidad de crear un aentidad
 
 app = FastAPI()
@@ -48,10 +48,11 @@ async def id(id: int):   # esto solo es un ejemplo para cuando haya mas parametr
 
 
 
-@app.post("/adduser/")  # Esto es para agregar usuarios
+@app.post("/adduser/", response_model=User, status_code=201)  # Esto es para agregar usuarios
 async def user(user: User):
     if type(find_user(user.id)) == User:
-        return {"Error": "User already exists"}
+        raise HTTPException(status_code= 404 , detail="User already exists") # Cuando lanzamos un error lo hacemos con el "raise"
+        # return {"Error": "User already exists"}
     
     users_list.append(user)
     return user
