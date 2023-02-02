@@ -42,7 +42,7 @@ display(Math("\\lim_{x\\to %g^-} %s = %s" % (lim_point, sym.latex(fx), lim)))
 
 plt.show()
 
-'''---------------------------------------------------------------'''
+'''---------------------------------------------------------------------------------------------------- 119'''
 
 x = sym.symbols('x')
 
@@ -71,9 +71,26 @@ display(Math('\\frac{\\lim_{x\\to %g }f(x)} {\\lim_{x\\to %g }f(x)} = \
 
 
 
+'''-----------------------------------------------------------------------------------------------------------------------------------120'''
+from sympy.abc import X
 
+piece1 = 0
+piece2 = -2*x
+piece3 = x**3/10
 
+fx = sym.Piecewise((piece1, x<0),(piece2,(x>=0) & (x<10)),(piece3, x>=3))
 
+fxx = sym.lambdify(x,fx)
+xx = np.linspace(-3,15,1234)
+plt.plot(xx,fxx(xx))
+
+plt.show()
+
+'''--------------''' # Exercise
+piece1 = x**3
+piece2 = sym.log(x,2) # Configuramos la base en el segundo argumento
+
+fx = sym.Piecewise((piece1,x<=0),(piece2,x>0))
 
 
 
