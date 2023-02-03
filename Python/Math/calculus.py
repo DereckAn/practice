@@ -92,7 +92,11 @@ piece2 = sym.log(x,2) # Configuramos la base en el segundo argumento
 
 fx = sym.Piecewise((piece1,x<=0),(piece2,x>0))
 
+fxx= sym.lambdify(x,fx)
+xx = np.linspace(-10,10,12345)
 
+plt.plot(xx,fxx(xx))
+plt.show()
 
 
 
