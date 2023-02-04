@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: "dereck-agneles",
+        primarySwatch: Colors.red,
       ),
       home: MyHomePage(),
     );
@@ -27,21 +28,46 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(),
-      drawer: Drawer(),
+      endDrawer: Drawer(
+          backgroundColor: Color.fromARGB(255, 23, 94, 103),
+          child: infinitIma()),
+      drawer: Drawer(
+          backgroundColor: Color.fromARGB(255, 121, 45, 45),
+          child: ListView(
+            children: [
+              Card(
+                child: Image.network(
+                    "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
+              ),
+              Card(
+                child: Image.network(
+                    "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
+              ),
+              Card(
+                child: Image.network(
+                    "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
+              ),
+              Card(
+                child: Image.asset("assets/ima5.JPG"),
+              ),
+              Card(
+                child: Image.asset("assets/ima1.JPG"),
+              ),
+            ],
+          )),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.accessibility_new),
         onPressed: () {},
       ),
-      backgroundColor: Color.fromARGB(255, 44, 126, 60),
+      backgroundColor: Color.fromARGB(255, 75, 76, 84),
       appBar: AppBar(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          title: Text("Material App"),
-          elevation: 0,
-          actions: <Widget>[
-            IconButton(onPressed: _add, icon: Icon(Icons.accessible_sharp))
-          ]),
+        backgroundColor: Color.fromARGB(255, 20, 103, 47),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        title: Text("Material App"),
+        // actions: <Widget>[
+        //   IconButton(onPressed: _add, icon: Icon(Icons.accessible_sharp))
+        // ]
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -124,5 +150,29 @@ class MyHomePage extends StatelessWidget {
 
   void _add() {
     print("Hola Popo");
+  }
+
+  List<String> _names = [
+    "PEPE",
+    "TOÑO",
+    "PEPETOÑO",
+    "PATRICIO",
+    "JUAN",
+    "BOLA",
+    "BANANA",
+    "DOS"
+  ];
+  @override //Este es un wigdet con imagenes de pato tierno infinitas
+  Widget infinitIma() {
+    return ListView.builder(
+      itemCount: _names.length,
+      itemBuilder: (context, index) {
+        final name = _names[index];
+        return Card(
+          child: Image.network(
+              "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
+        );
+      },
+    );
   }
 }
