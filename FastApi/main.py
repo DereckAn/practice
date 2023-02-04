@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import APIRouter
+from routers import products, users
 
-app = FastAPI()
+app = APIRouter()
 
 # uvicorn main:app --reload
 # Documentacion con Swagger: /docs
@@ -14,6 +15,10 @@ app = FastAPI()
 # PUT : para actualizar datos 
 # DELETE :  para borrar datos
 
+
+#Routers
+app.include_router(products.router)
+app.include_router(users.router)
 
 @app.get("/")
 async def root():
