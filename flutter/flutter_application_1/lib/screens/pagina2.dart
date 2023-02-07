@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key, required this.name}) : super(key: key);
-  final String name;
+class SecondPage extends StatefulWidget {
+  const SecondPage({super.key});
+  // final String name;
 
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     // SecondPageArguments arguments = ModalRoute.of(context).settings.arguments;
@@ -12,8 +17,7 @@ class SecondPage extends StatelessWidget {
         title: Text("Sedunga pantalla"),
       ),
       body: Center(
-        child: Text(name),
-
+        child: Text("hola a la pagina dos"),
       ),
     );
   }

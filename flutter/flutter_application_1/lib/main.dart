@@ -9,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -20,12 +20,11 @@ class MyApp extends StatelessWidget {
         fontFamily: "dereck-agneles",
         primarySwatch: Colors.red,
       ),
-      home: MyHomePage(),
-      // initialRoute: "/",
-      // routes: {
-      //   "/":(BuildContext context) => MyHomePage(),
-      //   "/second":(BuildContext context) => SecondPage(),},
+      // home: MyHomePage(),
+      initialRoute: "/",
+      routes: {
+        "/":(BuildContext context) => MyHomePage(),
+      "/second":(BuildContext context) => SecondPage(),},
     );
   }
 }
-

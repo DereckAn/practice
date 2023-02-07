@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'pagina2.dart';
 
-class MyHomePage extends StatelessWidget {
-  // MyHomePage();
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
 
+class _MyHomePageState extends State<MyHomePage> {
+  // MyHomePage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +78,8 @@ class MyHomePage extends StatelessWidget {
               icon: Icon(Icons.favorite_border)),
           GestureDetector(
             onDoubleTap: () {
-              _showSecondPage(context);
+              Navigator.pushNamed(context, "/second");
+              // _showSecondPage(context);
             },
             child: Container(
               child: Text(
@@ -151,6 +155,7 @@ class MyHomePage extends StatelessWidget {
     "BANANA",
     "DOS"
   ];
+
   @override //Este es un wigdet con imagenes de pato tierno infinitas
   Widget infinitIma() {
     return ListView.builder(
@@ -165,14 +170,14 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  void _showSecondPage(BuildContext context) {
-    // Esta forma no es la mas adecuada. L mas adecuada es hacer uso de rutas.
-    final route = MaterialPageRoute(builder: (BuildContext context) {
-      return SecondPage(key: key, name: "Dereck");
-    });
+  // void _showSecondPage(BuildContext context) {
+  //   // Esta forma no es la mas adecuada. L mas adecuada es hacer uso de rutas.
+  //   final route = MaterialPageRoute(builder: (BuildContext context) {
+  //     return SecondPage(key: key, name: "Dereck");
+  //   });
 
-    Navigator.of(context).push(route);
+  //   Navigator.of(context).push(route);
 
-    // Navigator.of(context).pushNamed("/second", arguments: "Dereck");  //Esta forma es mas adecuada 
-  }
+  //   // Navigator.of(context).pushNamed("/second", arguments: "Dereck");  //Esta forma es mas adecuada
+  // }
 }
