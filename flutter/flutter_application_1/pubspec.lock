@@ -9,6 +9,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  audioplayer:
+    dependency: "direct main"
+    description:
+      name: audioplayer
+      sha256: "8f3882ef1ec97678ba8cb67e2f455df1f03274fcc3052af27b8bbd5ac1ee2c46"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.1"
+  audioplayer_web:
+    dependency: "direct main"
+    description:
+      name: audioplayer_web
+      sha256: "2ca0898c799f225cdf25a5ef9168bd46fb6b9b8e9e86d89af6f780977b7da208"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -72,6 +88,11 @@ packages:
     version: "2.0.1"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -185,4 +206,5 @@ packages:
     source: hosted
     version: "2.1.4"
 sdks:
-  dart: ">=2.19.0 <4.0.0"
+  dart: ">=2.19.0 <3.0.0"
+  flutter: ">=1.10.0"
