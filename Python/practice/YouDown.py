@@ -3,8 +3,8 @@ from sys import argv
 # import os
 #  -*- coding: utf-8 -*-
 # import re
-from tkinter.filedialog import *
-import moviepy.editor 
+# from tkinter.filedialog import *
+# import moviepy.editor 
 
 rutaVideos ="D:\Fotos\Videos descargados de youtube por python"
 rutaMusica = "D:\Fotos\Videos descargados de youtube por python\Musica_trans"
