@@ -1,39 +1,33 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
-class ConCan extends StatefulWidget {
-  final String path;
-  const ConCan({required this.path});
+class repro extends StatefulWidget {
+  const repro({super.key});
 
   @override
-  State<ConCan> createState() => _ConCanState();
+  State<repro> createState() => _reproState();
 }
 
-class _ConCanState extends State<ConCan> {
+class _reproState extends State<repro> {
   final player = AudioPlayer();
   bool isPlaying = false;
-
-  @override
-  void initState() {
-    super.initState();
-    player.onPlayerStateChanged.listen((state) {
-      if (state == PlayerState.stopped) {
-        setState(() {
-          isPlaying = false;
-        });
-      }
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     final double HeightS = MediaQuery.of(context).size.height;
     final double WidthS = MediaQuery.of(context).size.width;
-    return Container(
-      height: HeightS/19,
-      width: WidthS,
-      color: Color.fromARGB(255, 19, 73, 81),
+    return Stack(
+      children: <Widget>[
+        Column(
+          children: [
+            Container(
+      height: HeightS/25,
+      width: double.infinity,
+      color: Color.fromARGB(255, 114, 209, 224),
       child: TextButton(
+        onPressed: () {  },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,8 +36,8 @@ class _ConCanState extends State<ConCan> {
               children: <Widget>[
                 Container(
                   // margin: EdgeInsetsDirectional.only(start: 10),
-                  height: WidthS/10,
-                  width:  WidthS/10,
+                  height: 50,
+                  width: 50,
                   child: Image.network(
                       "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
                 ),
@@ -53,14 +47,14 @@ class _ConCanState extends State<ConCan> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      widget.path.substring(6, widget.path.length - 4),
+                      "Cancion Sonand",
                       style: TextStyle(
                           fontSize: 16,
                           fontFamily: "DancingScript-VariableFont_wght.ttf",
                           color: Colors.white),
                     ),
                     Text(
-                      widget.path.substring(6, widget.path.length - 4),
+                      "Cancion Sonand",
                       style: TextStyle(
                           fontSize: 14,
                           fontFamily: "DancingScript-VariableFont_wght.ttf",
@@ -92,16 +86,38 @@ class _ConCanState extends State<ConCan> {
             ),
           ],
         ),
-        onPressed: () {
-          if (isPlaying) {
-            player.stop();
-          }
-          player.play(AssetSource(widget.path));
-          setState(() {
-            isPlaying = true;
-          });
-        },
+        // onPressed: () {
+        //   if (isPlaying) {
+        //     player.stop();
+        //   }
+        //   player.play(AssetSource(widget.path));
+        //   setState(() {
+        //     isPlaying = true;
+        //   });
+        // },
       ),
+    ),
+            Container(
+              height: HeightS/11,
+              width: WidthS,
+              color: Colors.yellow[800],
+              child: Row(
+                children: [
+                  Container(padding: EdgeInsets.all(10), 
+                    color: Color.fromARGB(200, 200, 200, 200),width: WidthS/3, 
+                  ),
+                   Container(padding: EdgeInsets.all(10),
+                    color: Color.fromARGB(199, 197, 69, 69),width: WidthS/3,
+                  ),
+                   Container(padding: EdgeInsets.all(10),
+                    color: Color.fromARGB(199, 56, 155, 173),width: WidthS/3,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
