@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Widgets/ContenCanc.dart';
+import 'package:just_audio/just_audio.dart';
 
 import '../Widgets/repro.dart';
 // import 'package:flutter_application_1/Widgets/canciones.dart';
@@ -17,7 +18,8 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  final player = AudioPlayer();
+  // final player = AudioPlayer();
+  AudioPlayer _player = AudioPlayer();
 
   @override
   void initState() {
@@ -71,8 +73,8 @@ class _SecondPageState extends State<SecondPage> {
 
                   return Container(
                     margin: const EdgeInsets.only(
-                        top: 10.0, left: 15.0, right: 15.0),
-                    padding: const EdgeInsets.only(top: 10.0, bottom: 20.0),
+                        top: 10.0, left: 10.0, right: 15.0),
+                    padding: const EdgeInsets.only(top: 0.0, bottom: 0.0),
                     decoration: BoxDecoration(
                       color: Color.fromARGB(33, 35, 142, 33),
                       borderRadius: BorderRadius.circular(4.0),
@@ -82,6 +84,8 @@ class _SecondPageState extends State<SecondPage> {
                       ),
                     ),
                     child: ListTile(
+                      trailing:
+                          const Icon(Icons.more_horiz, color: Colors.white),
                       textColor: Colors.white30,
                       title: Text(
                         title,
@@ -90,25 +94,24 @@ class _SecondPageState extends State<SecondPage> {
                       ),
                       subtitle: Text(
                           "path: ${path.substring(13, path.length - 4)}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white70,
                               fontSize: 12.0,
                               fontFamily:
                                   "DancingScript-VariableFont_wght.ttf")),
-                      leading: const Icon(
-                        Icons.audiotrack,
-                        size: 20,
-                      ),
+                      leading: Image.network(
+                          "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
                       onTap: () async {
                         final snackBar = SnackBar(
                           content: Text(title),
                         );
-                        // toast(context, "You selected $title");
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         // await player.setSourceAsset(path.substring(13));
-                        await player.play(
-                            AssetSource("${(songs[index]).substring(13).toString()}"));
+                        // await player.play(
+                        //     AssetSource("${(songs[index]).substring(13)}"));
                         print((songs[index]).substring(13));
+                        await _player.setAsset(path);
+                        await _player.play();
                       },
                     ),
                   );
