@@ -24,6 +24,8 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
+    final double HeightS = MediaQuery.of(context).size.height;
+    final double WidthS = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 19, 73, 81),
         appBar: AppBar(
@@ -34,20 +36,29 @@ class _SecondPageState extends State<SecondPage> {
             style: TextStyle(fontFamily: "DancingScript-VariableFont_wght.ttf"),
           ),
         ),
-        body: ListView(
-          children: <Widget>[
-            ConCan(path: "Music/Milagrito.mp3"),
-            ConCan(path: "Music/Dutustmirniemehrweh.mp3"),
-            ConCan(path: "Music/Clair_de_Lune.mp3"),
-            ConCan(path: "Music/Bandido.mp3"),
-            ConCan(path: "Music/Andare.mp3"),
-            ConCan(path: "Music/Another_Love.mp3"),
-            ConCan(path: "Music/Somewhere_Only_We_Know.mp3"),
-            ConCan(path: "Music/Snow.mp3"),
-            ConCan(path: "Music/Billie_Jean.mp3",),
-            repro()
-          ],
-        )
-      );
+        body: Stack(children: <Widget>[
+          ListView(
+            children: <Widget>[
+              ConCan(path: "Music/Milagrito.mp3"),
+              ConCan(path: "Music/Dutustmirniemehrweh.mp3"),
+              ConCan(path: "Music/Clair_de_Lune.mp3"),
+              ConCan(path: "Music/Bandido.mp3"),
+              ConCan(path: "Music/Andare.mp3"),
+              ConCan(path: "Music/Another_Love.mp3"),
+              ConCan(path: "Music/Somewhere_Only_We_Know.mp3"),
+              ConCan(path: "Music/Snow.mp3"),
+              ConCan(path: "Music/Billie_Jean.mp3"),
+              // repro()
+            ],
+          ),
+        ]),
+        bottomNavigationBar: BottomAppBar(elevation: 0.0,color: Color.fromARGB(0, 183, 18, 18),
+          child: Container(
+            child: repro(),
+            height: HeightS/7,
+            // color: Color.fromARGB(255, 19, 73, 81),
+          ),
+          // child: repro(),
+        ));
   }
 }

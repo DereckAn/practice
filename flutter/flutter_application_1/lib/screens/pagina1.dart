@@ -12,6 +12,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 60,
+          color: Colors.amber,
+        ),
+      ),
       endDrawer: Drawer(
           backgroundColor: Color.fromARGB(255, 23, 94, 103),
           child: infinitIma()),
