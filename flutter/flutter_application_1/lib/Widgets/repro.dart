@@ -1,4 +1,4 @@
-import 'package:audioplayers/audioplayers.dart';
+// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -11,7 +11,7 @@ class repro extends StatefulWidget {
 }
 
 class _reproState extends State<repro> {
-  final player = AudioPlayer();
+  // final player = AudioPlayer();
   bool isPlaying = false;
 
   @override
@@ -27,7 +27,7 @@ class _reproState extends State<repro> {
           height: HeightS / 22,
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Color.fromARGB(98, 7, 255, 218),
+              color: Color.fromARGB(84, 255, 7, 85),
               borderRadius: BorderRadius.all(Radius.circular(7))),
           child: TextButton(
             onPressed: () {},
@@ -90,7 +90,7 @@ class _reproState extends State<repro> {
                         Icons.play_arrow,
                       ),
                       onPressed: () {
-                        player.stop();
+                        // player.stop();
                       },
                       splashRadius: 1,
                     ),
@@ -112,14 +112,14 @@ class _reproState extends State<repro> {
         Container(
           height: HeightS / 11,
           width: WidthS,
-          color: Color.fromARGB(0, 249, 168, 37),
+          color: Color.fromARGB(64, 249, 168, 37),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
                 // padding: EdgeInsets.all(10),
-                color: Color.fromARGB(80, 0, 0, 0),
+                color: Color.fromARGB(0, 0, 0, 0),
                 width: WidthS / 3,
                 height: HeightS / 11,
                 child: IconButton(
@@ -131,7 +131,7 @@ class _reproState extends State<repro> {
               ),
               Container(
                 // padding: EdgeInsets.all(10),
-                color: Color.fromARGB(80, 0, 0, 0),
+                color: Color.fromARGB(0, 0, 0, 0),
                 width: WidthS / 3,
                 height: HeightS / 11,
                 child: IconButton(
@@ -143,7 +143,7 @@ class _reproState extends State<repro> {
               ),
               Container(
                 // padding: EdgeInsets.all(10),
-                color: Color.fromARGB(80, 0, 0, 0),
+                color: Color.fromARGB(0, 0, 0, 0),
                 width: WidthS / 3,
                 height: HeightS / 11,
                 child: IconButton(

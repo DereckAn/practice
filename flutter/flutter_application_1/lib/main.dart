@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Hola Princesa',
       theme: ThemeData(
-        fontFamily: "dereck-agneles",
+        fontFamily: "DancingScript-VariableFont_wght.ttf",
         primarySwatch: Colors.red,
       ),
       // home: MyHomePage(),

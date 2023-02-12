@@ -31,15 +31,24 @@ class _SecondPageState extends State<SecondPage> {
     final double HeightS = MediaQuery.of(context).size.height;
     final double WidthS = MediaQuery.of(context).size.width;
     return Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          elevation: 0.0,
-          color: Color.fromARGB(0, 183, 18, 18),
-          child: Container(
-            child: repro(),
-            height: HeightS / 7.3,
-          ),
-        ),
-        backgroundColor: Color.fromARGB(255, 19, 73, 81),
+        bottomNavigationBar: BottomNavigationBar(
+            elevation: 0.0,
+            iconSize: 50,
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.green[700],
+            backgroundColor: Color.fromARGB(29, 86, 14, 51),
+            currentIndex: 2,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_filled),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.search), label: "Search"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.library_music), label: "Library")
+            ]),
+        backgroundColor: Color.fromARGB(255,0,0,0),
         appBar: AppBar(
           backgroundColor: Colors.black87,
           elevation: 0.0,
@@ -71,22 +80,21 @@ class _SecondPageState extends State<SecondPage> {
                   title = title.replaceAll("%20", "");
                   title = title.split(".").first;
 
-                  return Container(
+                  return Container(height: HeightS/17,
                     margin: const EdgeInsets.only(
-                        top: 10.0, left: 10.0, right: 15.0),
+                        top: 0.0, left: 10.0, right: 10.0),
                     padding: const EdgeInsets.only(top: 0.0, bottom: 0.0),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(33, 35, 142, 33),
+                      color: Color.fromARGB(187, 137, 6, 6),
                       borderRadius: BorderRadius.circular(4.0),
                       border: Border.all(
-                        color: Colors.white70,
+                        color: Colors.black,
                         width: 1.0,
                       ),
                     ),
                     child: ListTile(
-                      trailing:
-                          const Icon(Icons.more_horiz, color: Colors.white),
-                      textColor: Colors.white30,
+                      trailing: Icon(Icons.more_horiz, color: Colors.white), 
+                      textColor: Color.fromARGB(204, 11, 170, 14),
                       title: Text(
                         title,
                         style: TextStyle(
@@ -100,7 +108,7 @@ class _SecondPageState extends State<SecondPage> {
                               fontFamily:
                                   "DancingScript-VariableFont_wght.ttf")),
                       leading: Image.network(
-                          "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4"),
+                          "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4",),
                       onTap: () async {
                         final snackBar = SnackBar(
                           content: Text(title),
