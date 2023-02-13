@@ -34,21 +34,21 @@ class _SecondPageState extends State<SecondPage> {
         bottomNavigationBar: BottomNavigationBar(
             elevation: 0.0,
             iconSize: 50,
-            unselectedItemColor: Colors.white,
+            unselectedItemColor: Color.fromARGB(255, 137, 11, 11),
             selectedItemColor: Colors.green[700],
-            backgroundColor: Color.fromARGB(29, 86, 14, 51),
             currentIndex: 2,
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled),
-                label: "Home",
+                icon: Icon(Icons.home_filled), label: "Home",
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.search), label: "Search"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.library_music), label: "Library")
+                  icon: Icon(Icons.library_music), label: "Library"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: "Library")
             ]),
-        backgroundColor: Color.fromARGB(255,0,0,0),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
         appBar: AppBar(
           backgroundColor: Colors.black87,
           elevation: 0.0,
@@ -68,9 +68,6 @@ class _SecondPageState extends State<SecondPage> {
               List? songs = jsonMap?.keys
                   .where((element) => element.endsWith(".mp3"))
                   .toList();
-              print(jsonMap);
-              print("\n\n\n");
-              print(songs);
 
               return ListView.builder(
                 itemCount: songs?.length,
@@ -80,12 +77,13 @@ class _SecondPageState extends State<SecondPage> {
                   title = title.replaceAll("%20", "");
                   title = title.split(".").first;
 
-                  return Container(height: HeightS/17,
+                  return Container(
+                    height: HeightS / 17,
                     margin: const EdgeInsets.only(
                         top: 0.0, left: 10.0, right: 10.0),
                     padding: const EdgeInsets.only(top: 0.0, bottom: 0.0),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(187, 137, 6, 6),
+                      color: Color.fromARGB(186, 12, 99, 64),
                       borderRadius: BorderRadius.circular(4.0),
                       border: Border.all(
                         color: Colors.black,
@@ -93,7 +91,27 @@ class _SecondPageState extends State<SecondPage> {
                       ),
                     ),
                     child: ListTile(
-                      trailing: Icon(Icons.more_horiz, color: Colors.white), 
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.download),
+                            color: Colors.white,
+                            onPressed: () {},
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.favorite),
+                            color: Colors.white,
+                            onPressed: () {},
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.more_horiz),
+                            color: Colors.white,
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                      // trailing: Icon(Icons.more_horiz, color: Colors.white),
                       textColor: Color.fromARGB(204, 11, 170, 14),
                       title: Text(
                         title,
@@ -108,7 +126,8 @@ class _SecondPageState extends State<SecondPage> {
                               fontFamily:
                                   "DancingScript-VariableFont_wght.ttf")),
                       leading: Image.network(
-                          "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4",),
+                        "https://avatars.githubusercontent.com/u/108163041?s=400&u=6c6af4a3b6c32023cde74120f69198ec3b401a4f&v=4",
+                      ),
                       onTap: () async {
                         final snackBar = SnackBar(
                           content: Text(title),
