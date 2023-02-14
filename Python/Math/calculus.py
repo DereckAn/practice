@@ -1,4 +1,4 @@
-from re import X
+# from re import X
 import sympy as sym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -93,16 +93,55 @@ piece2 = sym.log(x,2) # Configuramos la base en el segundo argumento
 fx = sym.Piecewise((piece1,x<=0),(piece2,x>0))
 
 fxx= sym.lambdify(x,fx)
-xx = np.linspace(-10,10,12345)
+xx = np.linspace(-1,5,100)
 
-plt.plot(xx,fxx(xx))
+
+with plt.xkcd(): # Este codigo es para darle a la grafico un estilo cmomo de nino
+    plt.plot(xx,fxx(xx))
 plt.show()
 
 
+display(Math("f(x) = " + sym.latex(fx)))
+
+'''-------------------------------------------------------------------------- 121 '''
+# Derivatives
+
+x = sym.symbols("x")
+
+fx = x**2
+
+dfx = sym.diff(fx)
+
+# Aqui vienen tres de las mas famosas notaciones para el calclo diferencial
+
+#Leibniz notacion 
+display(Math("f(x) = %s, \\quad \\frac {df}{dx} = %s" % (sym.latex(fx), sym.latex(dfx))))
 
 
 
 
+x = sym.symbols("x")
+
+fx = x**2
+
+dfx = sym.diff(fx)
+
+# Aqui vienen tres de las mas famosas notaciones para el calclo diferencial
+
+#Leibniz notacion -- german
+display(Math("f(x) = %s, \\quad \\frac {df}{dx} = %s" % (sym.latex(fx), sym.latex(dfx))))
+
+
+# Lagrange Notation -- french
+display(Math("f(x) = %s, \\quad f'= %s" % (sym.latex(fx), sym.latex(dfx))))
+
+
+# Newton Notation -- English
+display(Math("f(x) = %s, \\quad \\dot{f}= %s" % (sym.latex(fx), sym.latex(dfx))))
+
+
+
+import sympy.plotting.plot as symplot
 
 
 
