@@ -143,6 +143,19 @@ display(Math("f(x) = %s, \\quad \\dot{f}= %s" % (sym.latex(fx), sym.latex(dfx)))
 
 import sympy.plotting.plot as symplot
 
+fx = 3 - x**3
+
+p = symplot(fx,(x,-5,5), show=False)
+p.extend(symplot(sym.diff(fx),(x,-5,5), show=False))
+p[1].line_color = "r"
+p[0].line_color = "g"
+p[0].lable = "$f(x) = %s$" % sym.latex(fx)
+p[1].lable = "$f(x) = %s$" %sym.latex(sym.diff(fx))
+
+p.legend = True
+
+p.ylim = [-10,10]
+p.show()
 
 
 
