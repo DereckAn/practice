@@ -66,8 +66,12 @@ print(digital_root(151))
 
 
 # -----------------------------------
+# from ast import List
+from itertools import combinations
 
-UserWarningw3c
+s, n = input().split()
+s, n = sorted(s), int(n)
+print(*(''.join(x) for k in range(n) for x in combinations(s, k + 1)), sep='\n')
 
 
 
@@ -75,6 +79,16 @@ UserWarningw3c
 
 
 
+class Solution:
+    
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        lista2 = [x for x in nums ]
+        print(lista2)
+
+
+    twoSum([2,7,11,15], 9)
+
+        
 
 
 
