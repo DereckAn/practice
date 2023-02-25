@@ -90,6 +90,16 @@ class Solution:
 
         
 
+# -------------------------------------------------------------------------------------
+import textwrap
+string = "ABCDEFGHIJKLIMNOQRSTUVWXYZ"
+max_width = 4
 
-
-
+def wrap(string, max_width):
+    palabra = textwrap.TextWrapper(width=max_width)
+    lista = palabra.wrap(text=string)
+    print(lista)
+    print(palabra)
+    for i in lista:
+        return i
+wrap(string, max_width)
