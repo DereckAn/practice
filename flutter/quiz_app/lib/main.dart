@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './questions.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,9 +23,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      "What's your favorite color?",
-      "What is your favorite animal?"
+    const questions = [
+      {
+        "Question": "What's your favorite color?", // Esto es un mapa
+        "Answers": ["Red", "Green", "Blue", "Black"]
+      },
+      {
+        "Question": "What's your favorite animal?",
+        "Answers": ["Rabbit", "Gale", "Bird", "Dog"]
+      },
+      {
+        "Question": "What's your favorite Food?",
+        "Answers": ["Burger", "Salad", "Pizza", "Raise", "Ham"]
+      },
     ];
     return MaterialApp(
       home: Scaffold(
@@ -33,19 +44,13 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: <Widget>[
-            Question(questions[_questionIndex]),
-            ElevatedButton(
-              onPressed: _answerQuestions,
-              child: const Text("Answer 1"),
-            ),
-            ElevatedButton(
-              onPressed: () => print("Hola como estas?"),
-              child: const Text("Answer 2"),
-            ),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text("Answer 3"),
-            )
+            Question(questions[_questionIndex]['Question'] as String),
+
+
+            ...(questions[_questionIndex]['Answers'] as List<String>) // Este codigo es para las respuestas. Se generara un boton para cada posible respuesta localizada en el map
+                .map((answer) {
+              return asnwer(_answerQuestions, answer);
+            }),
           ],
         ),
       ),
