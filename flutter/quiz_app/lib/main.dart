@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import './questions.dart';
-import './answer.dart';
+import 'package:quiz_app/result.dart';
+
+import './quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,8 +11,54 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // const MyApp({super.key});
-  void _answerQuestions() {
+  var _questionIndex = 0;
+  var _totalScore = 0;
+
+  final _questions = const [
+    {
+      "Question": "What's your favorite color?", // Esto es un mapa
+      "Answers": [
+        {"text": "Red", "score": 2},
+        {"text": "Green", "score": 7},
+        {"text": "Blue", "score": 9},
+        {"text": "Black", "score": 10}
+      ]
+    },
+    {
+      "Question": "What's your favorite animal?",
+      "Answers": [
+        {"text": "Rabbit", "score": 8},
+        {"text": "Duck", "score": 11},
+        {"text": "Bird", "score": 9},
+        {"text": "Dog", "score": 10}
+      ]
+    },
+    {
+      "Question": "What's your favorite Food?",
+      "Answers": [
+        {"text": "Burger", "score": 6},
+        {"text": "Salad", "score": 7},
+        {"text": "Pizza", "score": 10},
+        {"text": "Ham", "score": 1}
+      ]
+    },
+    {
+      "Question": "What's your favorite Videogame?",
+      "Answers": [
+        {"text": "Metal Gear", "score": 10},
+        {"text": "Mario Bros", "score": 7},
+        {"text": "The last of us", "score": 10},
+        {"text": "Dead Space", "score": 9}
+      ]
+    },
+  ];
+
+  void _answerQuestions(int score) {
+    _totalScore += score;
+
+    if (_questionIndex < _questions.length) {
+      print("Wh have more questions");
+    }
     setState(() {
       _questionIndex += 1;
     });
@@ -19,41 +66,22 @@ class _MyAppState extends State<MyApp> {
     print("Answer chosen!");
   }
 
-  var _questionIndex = 0;
-
   @override
   Widget build(BuildContext context) {
-    const questions = [
-      {
-        "Question": "What's your favorite color?", // Esto es un mapa
-        "Answers": ["Red", "Green", "Blue", "Black"]
-      },
-      {
-        "Question": "What's your favorite animal?",
-        "Answers": ["Rabbit", "Gale", "Bird", "Dog"]
-      },
-      {
-        "Question": "What's your favorite Food?",
-        "Answers": ["Burger", "Salad", "Pizza", "Raise", "Ham"]
-      },
-    ];
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Hola?"),
-        ),
-        body: Column(
-          children: <Widget>[
-            Question(questions[_questionIndex]['Question'] as String),
-
-
-            ...(questions[_questionIndex]['Answers'] as List<String>) // Este codigo es para las respuestas. Se generara un boton para cada posible respuesta localizada en el map
-                .map((answer) {
-              return asnwer(_answerQuestions, answer);
-            }),
-          ],
-        ),
-      ),
+          appBar: AppBar(
+            title: const Text("Hola?"),
+          ),
+          body: _questionIndex <_questions.length //Aqui estamos poniendo un if.   Si el _questionIndex es menor que la logitus de questions entonces es verdadero.
+              ? Quiz(
+                  answerQuestions: _answerQuestions,
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                )
+              : Result(
+                  _totalScore) // Aqui estamos poniendo el else. Si no es verdadero el if que pusimo en arriva entonces aparecera un widget "center"
+          ),
     );
   }
 }
