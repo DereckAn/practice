@@ -14,7 +14,7 @@ class Answer extends StatelessWidget {
         // style: ButtonStyle(textStyle: Colors.green),
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 40, 170, 110)), ),
         onPressed: selectHandler,
-        child: Text(answerText, style:  const TextStyle(color: Color.fromARGB(255, 41, 174, 179))),
+        child: Text(answerText, style:  const TextStyle(color: Color.fromARGB(255, 179, 41, 75))),
       ),
     );
   }

@@ -6,7 +6,7 @@ import './answer.dart';
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int questionIndex;
-  final VoidCallback answerQuestions;
+  final Function answerQuestions;  // Mucho cuidado aqui. No pongas VoidCallBack porque te dara muchos errores. 
 
   const Quiz(
       {required this.questions,
