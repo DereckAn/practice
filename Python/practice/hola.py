@@ -103,3 +103,9 @@ def wrap(string, max_width):
     for i in lista:
         return i
 wrap(string, max_width)
+
+
+
+print(-221%23)
+print(13%3)
+print(-97%11)
