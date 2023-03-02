@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/pagina1.dart';
 import 'screens/pagina2.dart';
+import 'screens/palabraCambiante.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/":(BuildContext context) => MyHomePage(),
-      "/second":(BuildContext context) => SecondPage(),},
+      "/second":(BuildContext context) => SecondPage(),
+      "/third":(BuildContext context) => CambioPalabra(),},
     );
   }
 }

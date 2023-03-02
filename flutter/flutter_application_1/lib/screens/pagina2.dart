@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
+
 // import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_application_1/Widgets/ContenCanc.dart';
+
 import 'package:just_audio/just_audio.dart';
 
-import '../Widgets/repro.dart';
 // import 'package:flutter_application_1/Widgets/canciones.dart';
 
 class SecondPage extends StatefulWidget {
@@ -19,7 +17,7 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
   // final player = AudioPlayer();
-  AudioPlayer _player = AudioPlayer();
+  final AudioPlayer _player = AudioPlayer();
 
   @override
   void initState() {
@@ -34,12 +32,19 @@ class _SecondPageState extends State<SecondPage> {
         bottomNavigationBar: BottomNavigationBar(
             elevation: 0.0,
             iconSize: 50,
-            unselectedItemColor: Color.fromARGB(255, 137, 11, 11),
+            unselectedItemColor: const Color.fromARGB(255, 137, 11, 11),
             selectedItemColor: Colors.green[700],
             currentIndex: 2,
+             // Set the current index to 0 to select the first tab by default
+    onTap: (index) { // Define a function to handle tab taps
+      if (index == 0) { // Check if the first tab was tapped
+        Navigator.pushNamed(context, '/third'); // Navigate to the second screen using the named route '/second'
+      }
+    },
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled), label: "Home",
+                icon: Icon(Icons.home_filled),
+                label: "Home",
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.search), label: "Search"),
@@ -48,11 +53,11 @@ class _SecondPageState extends State<SecondPage> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.person), label: "Library")
             ]),
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         appBar: AppBar(
           backgroundColor: Colors.black87,
           elevation: 0.0,
-          title: Text(
+          title: const Text(
             "Your Songs",
             style: TextStyle(fontFamily: "DancingScript-VariableFont_wght.ttf"),
           ),
@@ -83,7 +88,7 @@ class _SecondPageState extends State<SecondPage> {
                         top: 0.0, left: 10.0, right: 10.0),
                     padding: const EdgeInsets.only(top: 0.0, bottom: 0.0),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(186, 12, 99, 64),
+                      color: const Color.fromARGB(186, 12, 99, 64),
                       borderRadius: BorderRadius.circular(4.0),
                       border: Border.all(
                         color: Colors.black,
@@ -95,27 +100,27 @@ class _SecondPageState extends State<SecondPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: Icon(Icons.download),
+                            icon: const Icon(Icons.download),
                             color: Colors.white,
                             onPressed: () {},
                           ),
                           IconButton(
-                            icon: Icon(Icons.favorite),
+                            icon: const Icon(Icons.favorite),
                             color: Colors.white,
                             onPressed: () {},
                           ),
                           IconButton(
-                            icon: Icon(Icons.more_horiz),
+                            icon: const Icon(Icons.more_horiz),
                             color: Colors.white,
                             onPressed: () {},
                           ),
                         ],
                       ),
                       // trailing: Icon(Icons.more_horiz, color: Colors.white),
-                      textColor: Color.fromARGB(204, 11, 170, 14),
+                      textColor: const Color.fromARGB(204, 11, 170, 14),
                       title: Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontFamily: "DancingScript-VariableFont_wght.ttf"),
                       ),
                       subtitle: Text(
