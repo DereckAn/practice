@@ -3,7 +3,7 @@ import 'screens/pagina1.dart';
 import 'screens/pagina2.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/":(BuildContext context) => MyHomePage(),
-      "/second":(BuildContext context) => SecondPage(),},
+      "/second":(BuildContext context) => const SecondPage(),},
     );
   }
 }
