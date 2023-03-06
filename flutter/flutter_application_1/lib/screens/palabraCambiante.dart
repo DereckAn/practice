@@ -12,6 +12,7 @@ class _CambioPalabraState extends State<CambioPalabra> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color.fromARGB(210, 0, 0, 0),
         appBar: AppBar(),
         body: Center(
           child: Column(
@@ -24,6 +25,7 @@ class _CambioPalabraState extends State<CambioPalabra> {
               ),
               // const Center(child: Text("hola perro")),
               const Palabra(),
+              const SizedBox(height: 10),
               ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
