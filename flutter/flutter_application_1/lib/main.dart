@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/":(BuildContext context) => MyHomePage(),
-      "/second":(BuildContext context) => SecondPage(),
-      "/third":(BuildContext context) => CambioPalabra(),},
+      "/second":(BuildContext context) => const SecondPage(),
+      "/third":(BuildContext context) => const CambioPalabra(),},
     );
   }
 }
