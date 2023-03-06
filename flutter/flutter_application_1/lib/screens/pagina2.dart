@@ -41,7 +41,7 @@ class _SecondPageState extends State<SecondPage> {
         Navigator.pushNamed(context, '/third'); // Navigate to the second screen using the named route '/second'
       }
     },
-            items: [
+            items:  const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_filled),
                 label: "Home",
