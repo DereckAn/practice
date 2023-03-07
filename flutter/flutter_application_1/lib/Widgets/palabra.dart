@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
-class Palabra extends StatefulWidget {
-// var current = WordPair.random();
-  const Palabra({super.key});
-
-  @override
-  State<Palabra> createState() => _PalabraState();
-}
-
-class _PalabraState extends State<Palabra> {
-  
+class Palabra extends StatelessWidget {
+var current = WordPair.random();
+  // const Palabra({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   audioplayers: ^3.0.1
   just_audio: ^0.9.31
+  english_words: ^4.0.0
   # audioplayer_web: ^0.7.1
 # audioplayer: ^0.8.1
 

@@ -24,7 +24,7 @@ class _CambioPalabraState extends State<CambioPalabra> {
                 height: 50,
               ),
               // const Center(child: Text("hola perro")),
-              const Palabra(),
+              Palabra(),
               const SizedBox(height: 10),
               ElevatedButton(
                   style: ButtonStyle(
