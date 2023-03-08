@@ -41,7 +41,7 @@ class _CambioPalabraState extends State<CambioPalabra> {
                   onPressed: () {
                     setState(() {
                       _currentWord =
-                          WordPair.random(); // Aqui estamos creando una pa;abra nueva cada vez que se apriete el boton. 
+                          WordPair.random(); // Aqui estamos creando una pa;abra nueva cada vez que se apriete el boton.
                     });
                     print("hola princesa");
                   },
