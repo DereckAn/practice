@@ -10,8 +10,11 @@ class CambioPalabra extends StatefulWidget {
 }
 
 class _CambioPalabraState extends State<CambioPalabra> {
-  var current = WordPair.random();
-  String _textocambiar = "Hola";
+  // var current = WordPair.random();
+  // String _textocambiar = "Hola";
+  late WordPair _currentWord = WordPair
+      .random(); // Esta linea de codigo sirve para que la variable tenga una palabra aleatoria.
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,8 @@ class _CambioPalabraState extends State<CambioPalabra> {
                 height: 50,
               ),
               // const Center(child: Text("hola perro")),
-              Palabra(_textocambiar),
+              Palabra(_currentWord
+                  .asPascalCase), //  Esta linea es para que mande la palabra aleaotria al objeto creado. En este caso palabra.
               const SizedBox(height: 10),
               ElevatedButton(
                   style: ButtonStyle(
@@ -36,7 +40,8 @@ class _CambioPalabraState extends State<CambioPalabra> {
                   ),
                   onPressed: () {
                     setState(() {
-                      _textocambiar = "Adios";
+                      _currentWord =
+                          WordPair.random(); // Aqui estamos creando una pa;abra nueva cada vez que se apriete el boton. 
                     });
                     print("hola princesa");
                   },

@@ -32,7 +32,7 @@ class _ConCanState extends State<ConCan> {
     return Container(
       height: HeightS/19,
       width: WidthS,
-      color: Color.fromARGB(255, 19, 73, 81),
+      color: const Color.fromARGB(255, 19, 73, 81),
       child: TextButton(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,14 +54,14 @@ class _ConCanState extends State<ConCan> {
                   children: <Widget>[
                     Text(
                       widget.path.substring(6, widget.path.length - 4),
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16,
                           fontFamily: "DancingScript-VariableFont_wght.ttf",
                           color: Colors.white),
                     ),
                     Text(
                       widget.path.substring(6, widget.path.length - 4),
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 14,
                           fontFamily: "DancingScript-VariableFont_wght.ttf",
                           color: Color.fromARGB(255, 134, 134, 134)),
@@ -75,7 +75,7 @@ class _ConCanState extends State<ConCan> {
                 IconButton(
                   alignment: Alignment.centerRight,
                   color: Colors.white,
-                  icon: Icon(Icons.favorite),
+                  icon: const Icon(Icons.favorite),
                   onPressed: () {
                     // player.play(AssetSource(widget.path));
                   },
@@ -83,7 +83,7 @@ class _ConCanState extends State<ConCan> {
                 IconButton(
                   alignment: Alignment.centerRight,
                   color: Colors.white,
-                  icon: Icon(Icons.more_horiz),
+                  icon: const Icon(Icons.more_horiz),
                   onPressed: () {
                     player.stop();
                   },
