@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import '../Widgets/palabra.dart';
 
@@ -9,6 +10,8 @@ class CambioPalabra extends StatefulWidget {
 }
 
 class _CambioPalabraState extends State<CambioPalabra> {
+  var current = WordPair.random();
+  String _textocambiar = "Hola";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,7 @@ class _CambioPalabraState extends State<CambioPalabra> {
                 height: 50,
               ),
               // const Center(child: Text("hola perro")),
-              Palabra(),
+              Palabra(_textocambiar),
               const SizedBox(height: 10),
               ElevatedButton(
                   style: ButtonStyle(
@@ -32,6 +35,9 @@ class _CambioPalabraState extends State<CambioPalabra> {
                         const Color.fromARGB(255, 25, 63, 95)),
                   ),
                   onPressed: () {
+                    setState(() {
+                      _textocambiar = "Adios";
+                    });
                     print("hola princesa");
                   },
                   child: const Text("Next")),
