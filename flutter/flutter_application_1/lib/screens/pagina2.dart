@@ -35,13 +35,20 @@ class _SecondPageState extends State<SecondPage> {
             unselectedItemColor: const Color.fromARGB(255, 137, 11, 11),
             selectedItemColor: Colors.green[700],
             currentIndex: 2,
-             // Set the current index to 0 to select the first tab by default
-    onTap: (index) { // Define a function to handle tab taps
-      if (index == 0) { // Check if the first tab was tapped
-        Navigator.pushNamed(context, '/third'); // Navigate to the second screen using the named route '/second'
-      }
-    },
-            items:  const [
+            // Set the current index to 0 to select the first tab by default
+            onTap: (index) {
+              // Define a function to handle tab taps
+              if (index == 0) {
+                // Check if the first tab was tapped
+                Navigator.pushNamed(context,
+                    '/third'); // Navigate to the second screen using the named route '/second'
+              }
+              if (index == 1) {
+                // Check if the second tab was tapped}
+                Navigator.pushNamed(context, '/fouth');
+              }
+            },
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_filled),
                 label: "Home",

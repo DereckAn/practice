@@ -51,15 +51,23 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: 60,
-                      height: 60,
-                      color: Colors.amber,
-                      child:Text(tx.amount.toString())
-                    ),
-                    Column(children: [
-                      Text(tx.id),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.green,
+                          width: 2,
+                        )),
+                        padding: const EdgeInsets.all(10),
+                        // width: 60,
+                        // height: 60,
+                        // color: Colors.amber,  // no se pueden poner dos colores al mismo tiempo. Cuidado con eso.
+                        child: Text(tx.amount.toString(),style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.purpleAccent), ) ),
+                    Column(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Text(tx.id, style: const TextStyle(fontSize: 19, color: Colors.pinkAccent),),
                       Text(tx.title),
-                      Text(tx.date.toString())
+                      Text(tx.date.toString(),style: const TextStyle(fontWeight: FontWeight.bold))
                     ])
                   ],
                 ),

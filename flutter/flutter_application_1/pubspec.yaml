@@ -71,7 +71,9 @@ flutter:
  
   - assets/Music/
   - assets/ima1.JPG
-  - assets/ima5.JPG 
+  - assets/ima5.JPG
+  - assets/ima3.jpg  
+  - assets/ima4.jpg
   # - assets/
   # - assets/Music/Debussy - Clair de Lune.mp3
   # - assets/ComptinedUnAutreÉté.mp3

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'screens/mobethas.dart';
 import 'screens/pagina1.dart';
 import 'screens/pagina2.dart';
 import 'screens/palabraCambiante.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +26,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/":(BuildContext context) => MyHomePage(),
       "/second":(BuildContext context) => const SecondPage(),
-      "/third":(BuildContext context) => const CambioPalabra(),},
+      "/third":(BuildContext context) => const CambioPalabra(),
+      "/fouth":(BuildContext context) => const Mobetas(),},
     );
   }
 }

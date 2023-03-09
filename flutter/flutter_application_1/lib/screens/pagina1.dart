@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           )),
       floatingActionButton: FloatingActionButton(
-        child:const Icon(Icons.accessibility_new),
+        child: const Icon(Icons.accessibility_new),
         onPressed: () {},
       ),
       backgroundColor: const Color.fromARGB(255, 75, 76, 84),
