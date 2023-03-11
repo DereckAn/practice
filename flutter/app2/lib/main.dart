@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transaction.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,13 +63,27 @@ class MyHomePage extends StatelessWidget {
                         // width: 60,
                         // height: 60,
                         // color: Colors.amber,  // no se pueden poner dos colores al mismo tiempo. Cuidado con eso.
-                        child: Text(tx.amount.toString(),style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.purpleAccent), ) ),
-                    Column(crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      Text(tx.id, style: const TextStyle(fontSize: 19, color: Colors.pinkAccent),),
-                      Text(tx.title),
-                      Text(tx.date.toString(),style: const TextStyle(fontWeight: FontWeight.bold))
-                    ])
+                        child: Text(
+                          "\$${tx.amount}", //this is string interpolation.  Es cuando usamos ${}  es como usamos el f"{}" en python. Pero para que podamos usar el symbolo de pesos normal tenemos que usar "\"
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Colors.purpleAccent),
+                        )),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            tx.id,
+                            style: const TextStyle(
+                                fontSize: 19, color: Colors.pinkAccent),
+                          ),
+                          Text(tx.title),
+                          Text(
+                            DateFormat.yMd().add_jm().format(tx.date), // Este es un paquete que importamos "intl" para modificar el formato de la fecha. 
+                            style: const TextStyle(color: Colors.grey),
+                          ),
+                        ])
                   ],
                 ),
               );
