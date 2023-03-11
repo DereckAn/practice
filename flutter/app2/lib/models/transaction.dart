@@ -1,4 +1,5 @@
 // Esta clase no tiene widgets solo es para que guarde unos datos. 
+
 class Transaction {
   //Attributes or Properties
   final String id;

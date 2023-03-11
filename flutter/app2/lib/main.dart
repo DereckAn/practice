@@ -1,6 +1,7 @@
+import 'package:app2/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
-import './transaction.dart';
-import 'package:intl/intl.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -22,10 +23,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(id: '01', title: "Water", amount: 10.00, date: DateTime.now()),
-    Transaction(id: '02', title: "Coca", amount: 15.36, date: DateTime.now()),
-  ]; //Aqui estamos haciendo una lista de transacciones.
+
+  // late String titleInput;  Estas variables son de una manera de caputar el input.
+  // late String amounInput;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class MyHomePage extends StatelessWidget {
         title: const Text("Flutter app"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Card(
@@ -46,49 +48,7 @@ class MyHomePage extends StatelessWidget {
                 child: const Text(
                     "Chart")), // Eleevation es para de tenga el efecto visial como de que un boton esta sobresaliendo.
           ),
-          Column(
-            children: transactions.map((tx) {
-              return Card(
-                child: Row(
-                  children: [
-                    Container(
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                          color: Colors.green,
-                          width: 2,
-                        )),
-                        padding: const EdgeInsets.all(10),
-                        // width: 60,
-                        // height: 60,
-                        // color: Colors.amber,  // no se pueden poner dos colores al mismo tiempo. Cuidado con eso.
-                        child: Text(
-                          "\$${tx.amount}", //this is string interpolation.  Es cuando usamos ${}  es como usamos el f"{}" en python. Pero para que podamos usar el symbolo de pesos normal tenemos que usar "\"
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.purpleAccent),
-                        )),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            tx.id,
-                            style: const TextStyle(
-                                fontSize: 19, color: Colors.pinkAccent),
-                          ),
-                          Text(tx.title),
-                          Text(
-                            DateFormat.yMd().add_jm().format(tx.date), // Este es un paquete que importamos "intl" para modificar el formato de la fecha. 
-                            style: const TextStyle(color: Colors.grey),
-                          ),
-                        ])
-                  ],
-                ),
-              );
-            }).toList(),
-          ), // Aqui estamos generando los widgets que vayamos a necesitar. Con un map.
+          const UserTransaction(),
           const Card(
             color: Colors.red,
             child: Text("List of Tx"),
