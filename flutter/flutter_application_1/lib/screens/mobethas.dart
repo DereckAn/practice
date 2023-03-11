@@ -14,7 +14,10 @@ class Mobetas extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Reward details",
-          style: TextStyle(color: Color.fromARGB(172, 0, 0, 0), fontSize: 18),
+          style: TextStyle(
+              color: Color.fromARGB(150, 0, 0, 0),
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Color.fromARGB(172, 0, 0, 0)),
@@ -23,8 +26,7 @@ class Mobetas extends StatelessWidget {
         leading: Builder(
             builder: (context) => IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context,
-                    '/second'); 
+                  Navigator.pushNamed(context, '/second');
                 },
                 icon: const Icon(Icons.arrow_back_ios_new))),
       ),
@@ -33,17 +35,19 @@ class Mobetas extends StatelessWidget {
           Container(
               color: Colors.pink,
               width: double.infinity,
-              height: 150,
+              height: 190,
               child: Image.asset(
                 "assets/ima3.jpg",
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               )),
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(margin: const EdgeInsets.only(left: 0, right :0.0, top: 0.0, bottom: 50.0),
+                Container(
+                  margin: const EdgeInsets.only(
+                      left: 0, right: 0.0, top: 0.0, bottom: 50.0),
                   padding: const EdgeInsets.all(5),
                   color: Colors.pink[100],
                   child: const Text(
