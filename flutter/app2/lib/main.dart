@@ -27,8 +27,6 @@ class MyHomePage extends StatelessWidget {
   // late String titleInput;  Estas variables son de una manera de caputar el input.
   // late String amounInput;
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
