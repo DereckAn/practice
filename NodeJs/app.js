@@ -12,3 +12,18 @@ if (amount<10){
 }
 
 console.log("It is my first node app");
+
+// Global - No window
+
+// __dirname - Path to current directory
+// __filename - Path to current file
+// require - Function to use module (CommonJS)
+// module - info about current module (file)
+// process - info about env where the program is being executed
+
+console.log(__dirname);
+console.log(__filename);
+
+setInterval(() => {
+    console.log("Hello World");
+}, 1000); // esto improme un hello world cada 1 segundo
