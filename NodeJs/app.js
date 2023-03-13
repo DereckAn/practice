@@ -32,14 +32,25 @@
 // Modules - Encapsulated Code (only share minimum)
 // CommonJs - every files is module (by default)
 
-const names = require("./4-names"); //esto es para importar el archivo 4-names.js
-const sayHello = require("./5-utils"); //esto es para importar el archivo 5-utils.js
-const people = require("./6-alternative"); 
-require("./7-mind-granade") // otra manera de importar un documento. De esta manera importaremos todo el docuemnto. 
-console.log(names);
 
-console.log(people)
+const os = require("os");
 
-sayHello("Dereck");
-sayHello(names.pedro);
-sayHello(names.juan);
+//info about current user
+const user = os.userInfo();
+
+console.log(user)
+
+
+//method returns the system uptime in seconds
+console.log(`The ystem uptime is  ${os.uptime()} seconds`);
+
+
+
+
+
+const currentOs = {
+    name: os.type,
+    release: os.release,
+    totalMem: os.totalmem,
+    freeMem: os.freemem,
+}
