@@ -32,27 +32,32 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Flutter app"),
+        actions: <Widget>[IconButton(onPressed: (){}, icon: const Icon(Icons.add))],
       ),
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Card(
-            color: Colors
-                .yellowAccent, // para cambiar el tamaño del texto necesitamos romper las dependencias que el texto tiene con el papa y el papa del hijo. Para eso usaremos un container.
-            elevation: 5,
-            child: Container(
-                width: double.infinity,
-                child: const Text(
-                    "Chart")), // Eleevation es para de tenga el efecto visial como de que un boton esta sobresaliendo.
-          ),
-          const UserTransaction(),
-          const Card(
-            color: Colors.red,
-            child: Text("List of Tx"),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Card(
+              color: Colors
+                  .yellowAccent, // para cambiar el tamaño del texto necesitamos romper las dependencias que el texto tiene con el papa y el papa del hijo. Para eso usaremos un container.
+              elevation: 5,
+              child: Container(
+                  width: double.infinity,
+                  child: const Text(
+                      "Chart")), // Eleevation es para de tenga el efecto visial como de que un boton esta sobresaliendo.
+            ),
+            const UserTransaction(),
+            const Card(
+              color: Colors.red,
+              child: Text("List of Tx"),
+            )
+          ],
+        ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(onPressed: (){}, child: const Icon(Icons.menu)),
     );
   }
 }

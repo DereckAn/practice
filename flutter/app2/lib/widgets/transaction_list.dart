@@ -30,7 +30,8 @@ class ListTrans extends StatelessWidget {
                     // height: 60,
                     // color: Colors.amber,  // no se pueden poner dos colores al mismo tiempo. Cuidado con eso.
                     child: Text(
-                      "\$${list_tra[index].amount}", //this is string interpolation.  Es cuando usamos ${}  es como usamos el f"{}" en python. Pero para que podamos usar el symbolo de pesos normal tenemos que usar "\"
+                      "\$${list_tra[index].amount.toStringAsFixed(2)}", //this is string interpolation.  Es cuando usamos ${}  es como usamos el f"{}" en python. Pero para que podamos usar el symbolo de pesos normal tenemos que usar "\"
+                      // toStringAsFixed se usa para manejar cuandos puntos decimales usaremos
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
