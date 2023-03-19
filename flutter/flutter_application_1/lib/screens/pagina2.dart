@@ -47,6 +47,10 @@ class _SecondPageState extends State<SecondPage> {
                 // Check if the second tab was tapped}
                 Navigator.pushNamed(context, '/fouth');
               }
+              if (index == 3) {
+                // Check if the second tab was tapped}
+                Navigator.pushNamed(context, '/fifth');
+              }
             },
             items: const [
               BottomNavigationBarItem(
