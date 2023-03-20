@@ -15,10 +15,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Perosnal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+        textTheme: ,
+          appBarTheme: AppBarTheme(
+            toolbarTextStyle: ThemeData.light()
+                .textTheme
+                .copyWith(
+                  titleLarge: const TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+                .bodyMedium,
+            titleTextStyle: ThemeData.light()
+                .textTheme
+                .copyWith(
+                  titleLarge: const TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+                .titleLarge,
+          ),
+          fontFamily: "Quicksand",
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+              .copyWith(secondary: Colors.amber)),
       home: MyHomePage(),
     );
   }
@@ -32,9 +56,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // late String titleInput;  Estas variables son de una manera de caputar el input.
 
-
-
-   final List<Transaction> _transactions = [
+  final List<Transaction> _transactions = [
     Transaction(id: '01', title: "Water", amount: 10.00, date: DateTime.now()),
     Transaction(id: '02', title: "Coca", amount: 15.36, date: DateTime.now()),
   ];
@@ -49,13 +71,17 @@ class _MyHomePageState extends State<MyHomePage> {
       _transactions.add(newTx);
     });
   }
-  
+
   void startAddNewTransaction(BuildContext ctx) {
     // Este metodo hace que al precionar el boton podamos agregar la informacion para el nuevo elemento
     showModalBottomSheet(
         context: ctx,
         builder: (_) {
-          return  GestureDetector( onTap: () {},behavior: HitTestBehavior.opaque, child: NewTransaction(_addNewtransaction), );
+          return GestureDetector(
+            onTap: () {},
+            behavior: HitTestBehavior.opaque,
+            child: NewTransaction(_addNewtransaction),
+          );
         });
   }
 
@@ -65,7 +91,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("Flutter app"),
         actions: <Widget>[
-          IconButton(onPressed: ()=> startAddNewTransaction(context), icon: const Icon(Icons.add))
+          IconButton(
+              onPressed: () => startAddNewTransaction(context),
+              icon: const Icon(Icons.add))
         ],
       ),
       body: SingleChildScrollView(
@@ -92,8 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation
           .centerFloat, // Esto es para controlar la ubicacion del boton flotante.
-      floatingActionButton:
-          FloatingActionButton(onPressed:  ()=> startAddNewTransaction(context), child: const Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => startAddNewTransaction(context),
+          child: const Icon(Icons.add)),
     );
   }
 }

@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
-  final titleController =
-      TextEditingController(); // Este es otro metodo de capturar el input y almacenarlo en una variable.
-  final amountController = TextEditingController();
+class NewTransaction extends StatefulWidget {
   final Function addTx;
-  NewTransaction(this.addTx, {super.key});
+  const NewTransaction(this.addTx, {super.key});
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+  // Este es otro metodo de capturar el input y almacenarlo en una variable.
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if (enteredTitle.isEmpty || enteredAmount <= 0) { // Esto es para que no agrege nuevos objetos si esta vacio o si tiene un valor negativo
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      // Esto es para que no agrege nuevos objetos si esta vacio o si tiene un valor negativo
       return;
     }
 
-    addTx(enteredTitle, enteredAmount);
+    widget.addTx(enteredTitle, enteredAmount);
+
+    Navigator.of(context).pop(); // Esto es para cerrar al finalizar de añadir un nuevo objeto a la lista
   }
 
   @override
