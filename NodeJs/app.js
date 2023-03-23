@@ -32,22 +32,24 @@
 // Modules - Encapsulated Code (only share minimum)
 // CommonJs - every files is module (by default)
 
-const http = require('http');
-const server = http.createServer((req, res) => {
-    console.log(req.url);
-    if(req.url === '/'){
-        res.end('Welcom to our home page');
-    }
 
-    if(req.url === '/about'){
-        res.end('You are in the about page');
-    }
-    // res.write('Welcom to our home page');
-    res.end(
-   `<h1> Oops The Address does not exists</h1>
-    <p>Hola perros, me duele el cuerpo. </p>
-    <a href="https://www.youtube.com/">Youtube</a>`
-    );
-});
 
-server.listen(5000);
+// nom i <packagename>  esto es para installar  paquetes de npm
+
+// global dependency  - use it in any project 
+// npm install -g <packagename>
+//sudo npm install -g <packagename>  (mac, linux)
+
+// package.json - manifest file (store important info about project/package)
+// manual approach (create package.json in the root, create properties etc)
+// npm init (step by step, press ener to skip)
+// npm init -y (everything default)
+
+
+const _ = require('lodash');
+
+const items = [1, [2,[3,[4]]]];
+
+const newItems = _.flattenDeep(items);
+
+console.log(newItems);
