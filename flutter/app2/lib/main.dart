@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Perosnal Expenses',
       theme: ThemeData(
-        textTheme: ,
+        // textTheme: ,
           appBarTheme: AppBarTheme(
             toolbarTextStyle: ThemeData.light()
                 .textTheme
