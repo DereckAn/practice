@@ -45,25 +45,43 @@
 // npm init (step by step, press ener to skip)
 // npm init -y (everything default)
 
+//------------------------------------------  Este es un ejemplo de las cosas asyncoronas 
+// const http = require("http");
 
-const http = require("http");
-
-const server = http.createServer((req, res) => {
-    if(req.url === "/"){
-        res.end("home page");
-    } else if(req.url === "/about"){
+// const server = http.createServer((req, res) => {
+//     if(req.url === "/"){
+//         res.end("home page");
+//     } else if(req.url === "/about"){
         
-        for(let i = 0; i<100; i++){
-            for(let j = 0; j<100; j++){
-                console.log(`${i} ${j}`)
-            }
-        }
-        res.end("<h1>About</h1>");
-    } else {
-        res.end("<h1>Page not found</h1>");
-    }
-})
+//         for(let i = 0; i<100; i++){
+//             for(let j = 0; j<100; j++){
+//                 console.log(`${i} ${j}`)
+//             }
+//         }
+//         res.end("<h1>About</h1>");
+//     } else {
+//         res.end("<h1>Page not found</h1>");
+//     }
+// })
 
-server.listen(5000, () => {
-    console.log("Server running on port 5000");
-});
+// server.listen(5000, () => {
+//     console.log("Server running on port 5000");
+// });
+
+//-------------------------------  Aqui estamos usando promesas
+
+const {readFile} = require("fs");
+
+const getText = (path) => {
+    return new Promise((resolve, reject) => {
+        readFile(path, "utf-8", (err, data) => {
+            if(err){
+                reject(err);
+            } else{
+                resolve(data);
+            }
+        })
+    })
+}
+
+getText(`./content/first.txt`).then(result => console.log(result)).catch(err => console.log(err));
