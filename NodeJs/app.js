@@ -46,12 +46,24 @@
 // npm init -y (everything default)
 
 
-const _ = require('lodash');
+const http = require("http");
 
-const items = [1, [2,[3,[4]]]];
+const server = http.createServer((req, res) => {
+    if(req.url === "/"){
+        res.end("home page");
+    } else if(req.url === "/about"){
+        
+        for(let i = 0; i<100; i++){
+            for(let j = 0; j<100; j++){
+                console.log(`${i} ${j}`)
+            }
+        }
+        res.end("<h1>About</h1>");
+    } else {
+        res.end("<h1>Page not found</h1>");
+    }
+})
 
-const newItems = _.flattenDeep(items);
-
-console.log(newItems);
-
-console.log("Hello");
+server.listen(5000, () => {
+    console.log("Server running on port 5000");
+});
