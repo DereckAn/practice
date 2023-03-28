@@ -1,3 +1,4 @@
+import 'package:app2/widgets/chart.dart';
 import 'package:app2/widgets/new_transaction.dart';
 // import 'package:app2/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Perosnal Expenses',
       theme: ThemeData(
-        // textTheme: ,
+          // textTheme: ,
           appBarTheme: AppBarTheme(
             toolbarTextStyle: ThemeData.light()
                 .textTheme
@@ -61,6 +62,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // Transaction(id: '02', title: "Coca", amount: 15.36, date: DateTime.now()),
   ];
 
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          const Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
+
   void _addNewtransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
         title: txTitle,
@@ -101,15 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Card(
-              color: Colors
-                  .yellowAccent, // para cambiar el tamaño del texto necesitamos romper las dependencias que el texto tiene con el papa y el papa del hijo. Para eso usaremos un container.
-              elevation: 5,
-              child: Container(
-                  width: double.infinity,
-                  child: const Text(
-                      "Chart")), // Eleevation es para de tenga el efecto visial como de que un boton esta sobresaliendo.
-            ),
+            Chart(_recentTransactions),
             ListTrans(_transactions),
             const Card(
               color: Colors.red,

@@ -11,7 +11,8 @@ class Chart extends StatelessWidget {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
       double totalSum = 0.0;
-      for (var i = 0; i < recentTransactions.length; i++) { // hay ptra manera de poner el "for"  for( var tx in recentTransactions )
+      for (var i = 0; i < recentTransactions.length; i++) {
+        // hay ptra manera de poner el "for"  for( var tx in recentTransactions )
         if (recentTransactions[i].date.day == weekDay.day &&
             recentTransactions[i].date.month == weekDay.month &&
             recentTransactions[i].date.year == weekDay.year) {
@@ -19,14 +20,15 @@ class Chart extends StatelessWidget {
         }
       }
 
-      print(DateFormat.E(weekDay));
-      print(totalSum);
-      return {'day': DateFormat.E(weekDay), 'amount': totalSum};
+      // print(DateFormat.E().format(weekDay));
+      // print(totalSum);
+      return {'day': DateFormat.E().format(weekDay), 'amount': totalSum};
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(groundTransactionValues);
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
