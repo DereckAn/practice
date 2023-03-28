@@ -57,8 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
   // late String titleInput;  Estas variables son de una manera de caputar el input.
 
   final List<Transaction> _transactions = [
-    Transaction(id: '01', title: "Water", amount: 10.00, date: DateTime.now()),
-    Transaction(id: '02', title: "Coca", amount: 15.36, date: DateTime.now()),
+    // Transaction(id: '01', title: "Water", amount: 10.00, date: DateTime.now()),
+    // Transaction(id: '02', title: "Coca", amount: 15.36, date: DateTime.now()),
   ];
 
   void _addNewtransaction(String txTitle, double txAmount) {
