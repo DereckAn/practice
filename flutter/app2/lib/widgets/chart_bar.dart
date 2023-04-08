@@ -12,11 +12,14 @@ class CharBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FittedBox( // este widget forza a su hijo adentro del espacio disponible
-            child: Text(
-                "\$${spendingAmount.toStringAsFixed(1)}")), // esta parte es para redondear
+        SizedBox(
+          height: 20,
+          child: FittedBox( // este widget forza a su hijo adentro del espacio disponible
+              child: Text(
+                  "\$${spendingAmount.toStringAsFixed(1)}")),
+        ), // esta parte es para redondear
         const SizedBox(height: 4),
-        Container(
+        SizedBox(
           height: 60,
           width: 10,
           child: Stack(

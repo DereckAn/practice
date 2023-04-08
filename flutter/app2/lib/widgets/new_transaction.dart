@@ -24,7 +24,8 @@ class _NewTransactionState extends State<NewTransaction> {
 
     widget.addTx(enteredTitle, enteredAmount);
 
-    Navigator.of(context).pop(); // Esto es para cerrar al finalizar de añadir un nuevo objeto a la lista
+    Navigator.of(context)
+        .pop(); // Esto es para cerrar al finalizar de añadir un nuevo objeto a la lista
   }
 
   @override
@@ -51,6 +52,22 @@ class _NewTransactionState extends State<NewTransaction> {
                 submitData(), // Aprende esto. Es para que el teclado agrege la cantidad y el titulo cuando apachurras el simbolode " listo" en el teclado
             // onChanged: (value) => amounInput = // Esto es para guardar nuestro input en una variable. Este es solo un metodo para hacerlo
             //     value
+          ),
+
+          SizedBox(
+            height: 70,
+            child: Row(
+              children: <Widget>[
+                const Text("No date Chosen!!"),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Choose Date",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
           ),
           ElevatedButton(
             onPressed: () {

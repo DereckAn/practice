@@ -31,10 +31,21 @@ class ListTrans extends StatelessWidget {
           : ListView.builder(
               // Esta es otra manera de crear unalista de widgets
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: Text("\$${list_tra[index].amount}"),
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                  elevation: 5,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child:
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: FittedBox(child: Text("\$${list_tra[index].amount}")),
+                          ),
+                    ),
+                    title: Text(list_tra[index].title),
+                    subtitle: Text(DateFormat.yMd().add_jm().format(list_tra[index].date)),
+                    
                   ),
                 );
                 // return Card(
