@@ -4,13 +4,14 @@ import 'package:intl/intl.dart';
 
 class ListTrans extends StatelessWidget {
   final List<Transaction> list_tra;
+  final Function deleteTx;
 
-  const ListTrans(this.list_tra, {super.key});
+  const ListTrans(this.list_tra, this.deleteTx , {super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 400,
       child: list_tra
               .isEmpty // Esto es un IF para ver si la lista esta vacia o no.
           ? Column(
@@ -45,6 +46,10 @@ class ListTrans extends StatelessWidget {
                     ),
                     title: Text(list_tra[index].title),
                     subtitle: Text(DateFormat.yMd().add_jm().format(list_tra[index].date)),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () => deleteTx(list_tra[index].id),
+                    )
                     
                   ),
                 );
