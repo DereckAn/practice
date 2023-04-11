@@ -101,25 +101,32 @@ class _MyHomePageState extends State<MyHomePage> {
       _transactions.removeWhere((tx) => tx.id == id);
     });
   }
+   
+  
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+  Widget build(BuildContext context) { 
+    final appBar =  AppBar(
         title: const Text("Flutter app"),
         actions: <Widget>[
           IconButton(
               onPressed: () => startAddNewTransaction(context),
               icon: const Icon(Icons.add))
         ],
-      ),
+      );
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Chart(_recentTransactions),
-            ListTrans(_transactions, _deleteTransaction),
+            SizedBox(
+              height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.3,
+              child: Chart(_recentTransactions)),
+            SizedBox(
+              height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.6,
+              child: ListTrans(_transactions, _deleteTransaction)),
             const Card(
               color: Colors.red,
               child: Text("List of Tx"),
