@@ -12,21 +12,25 @@ class ListTrans extends StatelessWidget {
   Widget build(BuildContext context) {
     return list_tra
             .isEmpty // Esto es un IF para ver si la lista esta vacia o no.
-        ? Column(
-            children: <Widget>[
-              Text(
-                "No Transactions added yet",
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                  height: 200,
-                  child: Image.asset("assets/images/pato.png",
-                      fit: BoxFit.cover))
-            ],
-          )
+        ? LayoutBuilder(
+          builder: (ctx, constraints){
+            return Column(
+              children: <Widget>[
+                Text(
+                  "No Transactions added yet",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset("assets/images/pato.png",
+                        fit: BoxFit.cover))
+              ],
+            );
+          },
+        )
         : ListView.builder(
             // Esta es otra manera de crear unalista de widgets
             itemBuilder: (context, index) {
