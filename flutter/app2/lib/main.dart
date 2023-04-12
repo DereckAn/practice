@@ -2,11 +2,18 @@ import 'package:app2/widgets/chart.dart';
 import 'package:app2/widgets/new_transaction.dart';
 // import 'package:app2/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 
 import 'models/transaction.dart';
 import 'widgets/transaction_list.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // // Esto es para que la app solo se pueda ver en modo portrait
+  // // No se ppermite rotar la pantalla
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp, 
+  //   DeviceOrientation.portraitDown, ]);
   runApp(const MyApp());
 }
 
@@ -44,12 +51,14 @@ class MyApp extends StatelessWidget {
           fontFamily: "Quicksand",
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
               .copyWith(secondary: Colors.amber)),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -61,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // Transaction(id: '01', title: "Water", amount: 10.00, date: DateTime.now()),
     // Transaction(id: '02', title: "Coca", amount: 15.36, date: DateTime.now()),
   ];
+
+  bool _showChart = false;
 
   List<Transaction> get _recentTransactions {
     return _transactions.where((tx) {
@@ -121,9 +132,21 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Show chart"),
+                Switch(
+                  value: _showChart, onChanged: (val) {
+                  setState(() {
+                    _showChart = val;
+                  });
+                }),
+              ],
+            ),
+            _showChart ? SizedBox(
               height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.225,
-              child: Chart(_recentTransactions)),
+              child: Chart(_recentTransactions)) :
             SizedBox(
               height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.6,
               child: ListTrans(_transactions, _deleteTransaction)),
