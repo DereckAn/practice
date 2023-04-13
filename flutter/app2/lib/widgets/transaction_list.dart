@@ -6,31 +6,31 @@ class ListTrans extends StatelessWidget {
   final List<Transaction> list_tra;
   final Function deleteTx;
 
-  const ListTrans(this.list_tra, this.deleteTx , {super.key});
+  const ListTrans(this.list_tra, this.deleteTx, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return list_tra
             .isEmpty // Esto es un IF para ver si la lista esta vacia o no.
         ? LayoutBuilder(
-          builder: (ctx, constraints){
-            return Column(
-              children: <Widget>[
-                Text(
-                  "No Transactions added yet",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                    height: constraints.maxHeight * 0.6,
-                    child: Image.asset("assets/images/pato.png",
-                        fit: BoxFit.cover))
-              ],
-            );
-          },
-        )
+            builder: (ctx, constraints) {
+              return Column(
+                children: <Widget>[
+                  Text(
+                    "No Transactions added yet",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                      height: constraints.maxHeight * 0.6,
+                      child: Image.asset("assets/images/pato.png",
+                          fit: BoxFit.cover))
+                ],
+              );
+            },
+          )
         : ListView.builder(
             // Esta es otra manera de crear unalista de widgets
             itemBuilder: (context, index) {
@@ -38,22 +38,21 @@ class ListTrans extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 elevation: 5,
                 child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child:
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FittedBox(child: Text("\$${list_tra[index].amount}")),
-                        ),
-                  ),
-                  title: Text(list_tra[index].title),
-                  subtitle: Text(DateFormat.yMd().add_jm().format(list_tra[index].date)),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () => deleteTx(list_tra[index].id),
-                  )
-                  
-                ),
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FittedBox(
+                            child: Text("\$${list_tra[index].amount}")),
+                      ),
+                    ),
+                    title: Text(list_tra[index].title),
+                    subtitle: Text(
+                        DateFormat.yMd().add_jm().format(list_tra[index].date)),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () => deleteTx(list_tra[index].id),
+                    )),
               );
               // return Card(
               //   child: Row(

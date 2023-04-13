@@ -16,7 +16,7 @@ class _NewTransactionState extends State<NewTransaction> {
   DateTime _selectedDate = DateTime.now();
 
   void _submitData() {
-    if(amountController.text.isEmpty){
+    if (amountController.text.isEmpty) {
       return;
     }
     final enteredTitle = titleController.text;
@@ -33,82 +33,90 @@ class _NewTransactionState extends State<NewTransaction> {
         .pop(); // Esto es para cerrar al finalizar de añadir un nuevo objeto a la lista
   }
 
-  void _presentDate(){
+  void _presentDate() {
     showDatePicker(
-      context: context, 
-      firstDate: DateTime(2019), 
-      initialDate: DateTime.now(), 
-      lastDate: DateTime.now()).then(
-        (pickedDate){ 
-          if (pickedDate == null){
-            return;
-            }
-            setState(() {
-              _selectedDate = pickedDate;
-            });
-          }
-        );
+            context: context,
+            firstDate: DateTime(2019),
+            initialDate: DateTime.now(),
+            lastDate: DateTime.now())
+        .then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child: Container(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          TextField(
-            decoration: const InputDecoration(labelText: "Title"),
-            controller:
-                titleController, // Esto es otra manera de guardar el input.
-            // onChanged: (value) => titleInput =// Esto es para guardar nuestro input en una variable. Este solo es un metodo para hacerlo
-            //     value
-          ),
-          TextField(
-            decoration: const InputDecoration(labelText: "Amount"),
-            keyboardType: const TextInputType.numberWithOptions(
-                decimal: true), // Esto es para cambiar el tipo teclado
-            controller: amountController,
-            onSubmitted: (_) =>
-                _submitData(), // Aprende esto. Es para que el teclado agrege la cantidad y el titulo cuando apachurras el simbolode " listo" en el teclado
-            // onChanged: (value) => amounInput = // Esto es para guardar nuestro input en una variable. Este es solo un metodo para hacerlo
-            //     value
-          ),
-
-          SizedBox(
-            height: 70,
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Text(
-                    _selectedDate == null ? "No date Chosen!!" : 'Day Selected: ${DateFormat.yMd().format(_selectedDate)}')),
-                TextButton(
-                  onPressed: _presentDate,
-                  child: const Text(
-                    "Choose Date",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                )
-              ],
+    return SingleChildScrollView(
+      child: Card(
+          child: Container(
+        padding: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            TextField(
+              decoration: const InputDecoration(labelText: "Title"),
+              controller:
+                  titleController, // Esto es otra manera de guardar el input.
+              // onChanged: (value) => titleInput =// Esto es para guardar nuestro input en una variable. Este solo es un metodo para hacerlo
+              //     value
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // print(titleInput);
-              // print(amounInput);
-              // print(titleController.text);
-              // print(amountController.text);
-              // addTx(titleController.text, double.parse(amountController.text));
-              _submitData();
-            },
-            child: const Text(
-              "Add Transaction",
-              style: TextStyle(color: Color.fromARGB(255, 66, 21, 74), fontWeight: FontWeight.bold),
+            TextField(
+              decoration: const InputDecoration(labelText: "Amount"),
+              keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true), // Esto es para cambiar el tipo teclado
+              controller: amountController,
+              onSubmitted: (_) =>
+                  _submitData(), // Aprende esto. Es para que el teclado agrege la cantidad y el titulo cuando apachurras el simbolode " listo" en el teclado
+              // onChanged: (value) => amounInput = // Esto es para guardar nuestro input en una variable. Este es solo un metodo para hacerlo
+              //     value
             ),
-          ) // TextFiel es responsable de recibir texto del usuario. como si fuera un input en python.
-        ],
-      ),
-    ));
+    
+            SizedBox(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: Text(_selectedDate == null
+                          ? "No date Chosen!!"
+                          : 'Day Selected: ${DateFormat.yMd().format(_selectedDate)}')),
+                  TextButton(
+                    onPressed: _presentDate,
+                    child: const Text(
+                      "Choose Date",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // print(titleInput);
+                // print(amounInput);
+                // print(titleController.text);
+                // print(amountController.text);
+                // addTx(titleController.text, double.parse(amountController.text));
+                _submitData();
+              },
+              child: const Text(
+                "Add Transaction",
+                style: TextStyle(
+                    color: Color.fromARGB(255, 66, 21, 74),
+                    fontWeight: FontWeight.bold),
+              ),
+            ) // TextFiel es responsable de recibir texto del usuario. como si fuera un input en python.
+          ],
+        ),
+      )),
+    );
   }
 }

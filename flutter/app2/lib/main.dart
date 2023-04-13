@@ -12,7 +12,7 @@ void main() {
   // // Esto es para que la app solo se pueda ver en modo portrait
   // // No se ppermite rotar la pantalla
   // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp, 
+  //   DeviceOrientation.portraitUp,
   //   DeviceOrientation.portraitDown, ]);
   runApp(const MyApp());
 }
@@ -83,7 +83,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewtransaction(String txTitle, double txAmount, DateTime chosenDate) {
+  void _addNewtransaction(
+      String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
         title: txTitle,
         amount: txAmount,
@@ -107,24 +108,33 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  void _deleteTransaction(String id){
-    setState((){
+  void _deleteTransaction(String id) {
+    setState(() {
       _transactions.removeWhere((tx) => tx.id == id);
     });
   }
-   
-  
 
   @override
-  Widget build(BuildContext context) { 
-    final appBar =  AppBar(
-        title: const Text("Flutter app"),
-        actions: <Widget>[
-          IconButton(
-              onPressed: () => startAddNewTransaction(context),
-              icon: const Icon(Icons.add))
-        ],
-      );
+  Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
+    final appBar = AppBar(
+      title: const Text("Flutter app"),
+      actions: <Widget>[
+        IconButton(
+            onPressed: () => startAddNewTransaction(context),
+            icon: const Icon(Icons.add))
+      ],
+    );
+
+    final listBuy = SizedBox(
+        height: (MediaQuery.of(context).size.height -
+                appBar.preferredSize.height -
+                MediaQuery.of(context).padding.top) *
+            0.6,
+        child: ListTrans(_transactions, _deleteTransaction));
+
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
@@ -132,24 +142,37 @@ class _MyHomePageState extends State<MyHomePage> {
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Show chart"),
-                Switch(
-                  value: _showChart, onChanged: (val) {
-                  setState(() {
-                    _showChart = val;
-                  });
-                }),
-              ],
-            ),
-            _showChart ? SizedBox(
-              height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) * .7,
-              child: Chart(_recentTransactions)) :
-            SizedBox(
-              height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) * 0.6,
-              child: ListTrans(_transactions, _deleteTransaction)),
+            if (isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Show chart"),
+                  Switch(
+                      value: _showChart,
+                      onChanged: (val) {
+                        setState(() {
+                          _showChart = val;
+                        });
+                      }),
+                ],
+              ),
+            if (!isLandscape)
+              SizedBox(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      .3,
+                  child: Chart(_recentTransactions)),
+            if (!isLandscape) listBuy,
+            if (isLandscape)
+              _showChart
+                  ? SizedBox(
+                      height: (MediaQuery.of(context).size.height -
+                              appBar.preferredSize.height -
+                              MediaQuery.of(context).padding.top) *
+                          .7,
+                      child: Chart(_recentTransactions))
+                  : listBuy,
             const Card(
               color: Colors.red,
               child: Text("List of Tx"),
