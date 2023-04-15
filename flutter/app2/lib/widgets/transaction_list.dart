@@ -49,10 +49,15 @@ class ListTrans extends StatelessWidget {
                     title: Text(list_tra[index].title),
                     subtitle: Text(
                         DateFormat.yMd().add_jm().format(list_tra[index].date)),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () => deleteTx(list_tra[index].id),
-                    )),
+                    trailing: MediaQuery.of(context).size.width > 400
+                        ? TextButton.icon(
+                            onPressed: () => deleteTx(list_tra[index].id),
+                            icon: const Icon(Icons.delete),
+                            label: const Text("Delete"))
+                        : IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () => deleteTx(list_tra[index].id),
+                          )),
               );
               // return Card(
               //   child: Row(
