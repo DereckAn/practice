@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import 'adaptive.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -88,13 +92,8 @@ class _NewTransactionState extends State<NewTransaction> {
                       child: Text(_selectedDate == null
                           ? "No date Chosen!!"
                           : 'Day Selected: ${DateFormat.yMd().format(_selectedDate)}')),
-                  TextButton(
-                    onPressed: _presentDate,
-                    child: const Text(
-                      "Choose Date",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  )
+
+                  AdaptiveFlaButton("Choose Date", _presentDate),
                 ],
               ),
             ),
