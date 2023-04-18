@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:app2/widgets/chart.dart';
 import 'package:app2/widgets/new_transaction.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:app2/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
@@ -116,8 +119,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final mediaQuety = MediaQuery.of(context);
+    final isLandscape = mediaQuety.orientation == Orientation.landscape;
+
+    //  final PreferredSize appBar = Platform.isIOS
+    //     ? CupertinoNavigationBar(
+    //         middle: const Text("Flutter app"),
+    //         trailing: Row(
+    //           mainAxisSize: MainAxisSize.min,
+    //           children: [
+    //             GestureDetector(
+    //                 onTap: () => startAddNewTransaction(context),
+    //                 child: const Icon(CupertinoIcons.add))
+    //           ],
+    //         ),
+    //       )
+    //     : AppBar(
+    //         title: Text("Flutter app"),
+    //         actions: <Widget>[
+    //           IconButton(
+    //               onPressed: () => startAddNewTransaction(context),
+    //               icon: const Icon(Icons.add))
+    //         ],
+    //       );
 
     final appBar = AppBar(
       title: const Text("Flutter app"),
@@ -129,15 +153,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     final listBuy = SizedBox(
-        height: (MediaQuery.of(context).size.height -
+        height: (mediaQuety.size.height -
                 appBar.preferredSize.height -
-                MediaQuery.of(context).padding.top) *
+                mediaQuety.padding.top) *
             0.6,
         child: ListTrans(_transactions, _deleteTransaction));
 
-    return Scaffold(
-      appBar: appBar,
-      body: SingleChildScrollView(
+    final maini = SafeArea(
+      child: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -147,7 +170,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("Show chart"),
-                  Switch(
+                  Switch.adaptive(
+                      // Esto es para que el switch se adapte al sistema operativo
                       value: _showChart,
                       onChanged: (val) {
                         setState(() {
@@ -158,18 +182,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (!isLandscape)
               SizedBox(
-                  height: (MediaQuery.of(context).size.height -
+                  height: (mediaQuety.size.height -
                           appBar.preferredSize.height -
-                          MediaQuery.of(context).padding.top) *
+                          mediaQuety.padding.top) *
                       .3,
                   child: Chart(_recentTransactions)),
             if (!isLandscape) listBuy,
             if (isLandscape)
               _showChart
                   ? SizedBox(
-                      height: (MediaQuery.of(context).size.height -
+                      height: (mediaQuety.size.height -
                               appBar.preferredSize.height -
-                              MediaQuery.of(context).padding.top) *
+                              mediaQuety.padding.top) *
                           .7,
                       child: Chart(_recentTransactions))
                   : listBuy,
@@ -180,11 +204,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation
-          .centerFloat, // Esto es para controlar la ubicacion del boton flotante.
-      floatingActionButton: FloatingActionButton(
-          onPressed: () => startAddNewTransaction(context),
-          child: const Icon(Icons.add)),
     );
+  return  Scaffold(
+            appBar: appBar,
+            body: maini,
+            floatingActionButtonLocation: FloatingActionButtonLocation
+                .centerFloat, // Esto es para controlar la ubicacion del boton flotante.
+            floatingActionButton: Platform.isIOS
+                ? Container()
+                : // Esto es para que el boton flotante solo se muestre en android
+                FloatingActionButton(
+                    onPressed: () => startAddNewTransaction(context),
+                    child: const Icon(Icons.add)),
+          );
+    // return Platform.isIOS
+    //     ? CupertinoPageScaffold(
+    //         navigationBar: appBar,
+    //         child: maini,
+    //       )
+  
   }
 }
