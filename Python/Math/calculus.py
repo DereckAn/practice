@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from IPython.display import display, Math
 
-
+ 
 '''---------------------------------------------------------------------------------------------------------------------118'''
 # Computing limist of a function. 
 
